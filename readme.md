@@ -392,3 +392,23 @@ cd ..
 ```
 rm -rf projetoBackend
 ```
+## 4º Passo: Testar rotas da API com o Insomnia
+### PRIMEIRO:
+* Clonar repositorio no git bash
+
+OBS: Caso de erro, coloque o comando ls e logo o comando de delete: rm -rf PROJETO_BACKEND/
+```
+ls
+```
+```
+rm -rf PROJETO_BACKEND/
+```
+* Instalar pacotes novamente
+```
+npm i
+```
+### SEGUNDO PASSO: INSOMIA
+* Criar nova pasta
+* Criar nova coleção
+* Criar 'New HTTP Request': GET, PUT, POST E DELETE
+* s descrever a url da nossa API com a porta que definimos ( http://localhost:3000 ) e as rotas (/api/listar) que criamos no arquivo rotas.js em cada metodo. 
