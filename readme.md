@@ -412,3 +412,90 @@ npm i
 * Criar nova coleção
 * Criar 'New HTTP Request': GET, PUT, POST E DELETE
 * s descrever a url da nossa API com a porta que definimos ( http://localhost:3000 ) e as rotas (/api/listar) que criamos no arquivo rotas.js em cada metodo. 
+
+# 5º Passo: Criar controllers para gerenciar as requisições das rotas
+- Git clone: 
+```
+git clone URL_REPOSITORIO
+```
+- Acessar pasta 
+```
+cd NOME_REPOSITORIO
+```
+- instalar pacotes 
+```
+npm i
+```
+- Criar pasta 'controllers' dentro da pasta 'src'
+```
+mkdir scr/controllers
+```
+- Criar arquivo 'crudController.js' na pasta 'controllers'
+```
+touch src/controllers/crudController.js
+```
+- Colar os códigos no arquivo crudController.js
+```
+function listarDados(request, response) {
+    response.send('Retorno de lista de informação do Banco de dados');
+}
+
+function gravarDados(request, response) {
+    response.send('Método utilizado para salvar informações!');
+}
+
+function atualizarDados(request, response) {
+    response.send('Método utilizado para editar informações!');
+}
+
+function deletarDados(request, response) {
+    response.send('Método utilizado para deletar informações!');
+}
+
+module.exports = {
+    listarDados,
+    gravarDados, 
+    atualizarDados, 
+    deletarDados
+}
+```
+- Alterar o arquivo 'rotas.js'
+```
+// Importar pacote do express
+const { Router } = require('express');
+// Instanciar o Router na variavel router
+const router = Router();
+// Importar funções do controller para a rota acessar as funções
+const { 
+    listarDados,
+    gravarDados,
+    atualizarDados,
+    deletarDados
+ } = require('../controllers/crudController');
+
+router.get('/listar', listarDados);
+
+router.post('/gravar', gravarDados);
+
+router.put('/atualizar/:id', atualizarDados);
+
+router.delete('/deletar/:id', deletarDados);
+
+module.exports = router;
+```
+- rodar no insomia
+```
+exemplo: http://localhost:3333/api/deletar/:id
+```
+resultados:
+
+- post
+
+<img src="./imagens/POST.PNG">
+
+- get
+<img src="./imagens/GET.PNG">
+- delete
+<img src="./imagens/DELETE.PNG">
+- put
+<img src="./imagens/PUT.PNG">
